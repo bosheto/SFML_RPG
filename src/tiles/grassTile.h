@@ -3,5 +3,5 @@
 
 class GrassTile : public Tile {
     public:
-    GrassTile() : Tile(1,0, 0){};
+        GrassTile() : Tile(1,0, 0){};
 };

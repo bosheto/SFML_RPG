@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <optional>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Sprite.hpp>
@@ -24,7 +25,11 @@ class Level{
         Level(std::string levelName, int sizeX, int sizeY, std::string levelTextureName);
         void draw(sf::RenderWindow& window);
         void update();
-    
+        void setTile(position pos, Tile tile);
+        Tile getTile(position pos);
+        int getSizeX(){return sizeX;};
+        int getSizeY(){return sizeY;};
+
     private:
         void init();
 };

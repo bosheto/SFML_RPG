@@ -25,13 +25,21 @@ int main() {
              if (event.type == sf::Event::MouseButtonPressed) {
                 // Get the mouse position relative to the window
                 sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+                
                 position t = getWorldPosition(mousePos);
-                // Display the mouse position when clicked
+                
+                if(t.x < 0 || t.x >= level.getSizeX() || t.y < 0 || t.y >= level.getSizeY()){
+                    continue;
+                }
+
+                Tile tile = StoneTile();
+                level.setTile(t, tile);
+                // level.setTile(t, tile);
                 std::cout << "Mouse clicked at: (" << t.x << ", " << t.y << ")" << std::endl;
+                // std::cout << tile.getId() << std::endl;
             }
         }
-
-
+        
         window.clear();
         level.draw(window);        
         window.display();

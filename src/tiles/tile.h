@@ -12,8 +12,11 @@ class Tile{
         int textureX;
         int textureY;
         int id;
+        bool isSolid = false;
+
     public:
         Tile(int id, int spriteX, int spriteY);
         sf::IntRect getSpriteRect();
-        int getId() {return id;};
+        int getId(){return id;};
+        bool IsSolid() {return isSolid;};
 };

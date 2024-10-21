@@ -5,3 +5,4 @@
 #include "waterTile.h"
 #include "sandTile.h"
 #include "dirtTile.h"
+#include "airTile.h"

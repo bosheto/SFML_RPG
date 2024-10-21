@@ -1,5 +1,5 @@
 #include "level.h"
-
+#include <iostream>
 Level::Level(std::string name, int sizeX, int sizeY, std::string levelTextureName){
     Level::levelName = name;
     Level::sizeX = sizeX;
@@ -20,17 +20,22 @@ void Level::init(){
         for (int x = 0; x < sizeX; x++)
         {
             /* code */
-            Tile tile = GrassTile();
+            Tile tile = AirTile();
             row.push_back(tile);
         }
         tiles.push_back(row);
     }
+
+    tiles[3][3] = GrassTile();  
 }
 
 void Level::draw(sf::RenderWindow& window){
     for(int y = 0; y < sizeY; y++){
         for (int x = 0; x < sizeX; x++)
         {
+            if(tiles[y][x].getId() == 0){
+                continue;
+            }
             sf::Sprite sprite;
             sprite.setTexture(levelTexture);
             sprite.setTextureRect(tiles[y][x].getSpriteRect());
@@ -42,6 +47,14 @@ void Level::draw(sf::RenderWindow& window){
             window.draw(sprite);            
         }
     }
+}
+
+Tile Level::getTile(position pos){
+    return tiles[pos.y][pos.x];
+}
+
+void Level::setTile(position pos, Tile tile){
+    tiles[pos.y][pos.x] = tile;
 }
 
 void Level::update(){

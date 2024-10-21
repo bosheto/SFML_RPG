@@ -3,5 +3,6 @@
 
 class WaterTile : public Tile {
     public:
-    WaterTile(int x, int y) : Tile(4,0){setPosition(x,y);}
+    WaterTile() : Tile(5,4,0){};
+
 };
