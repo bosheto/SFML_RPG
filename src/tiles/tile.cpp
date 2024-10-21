@@ -6,13 +6,18 @@
     Tile::textureY = spriteY;
     Tile::sprite.setTexture(Tile::texture);
     Tile::sprite.setTextureRect(sf::IntRect(Tile::textureX * SPRITE_SIZE,
-     Tile::textureY * SPRITE_SIZE, SPRITE_SIZE, SPRITE_SIZE));
+    Tile::textureY * SPRITE_SIZE, SPRITE_SIZE, SPRITE_SIZE));
    
    Tile::sprite.setPosition(0,0);
 }
 
 void Tile::draw(sf::RenderWindow& window){
     window.draw(Tile::sprite);
+}
+
+sf::IntRect Tile::getSpriteRect(){
+    return sf::IntRect(Tile::textureX * SPRITE_SIZE,
+        Tile::textureY * SPRITE_SIZE, SPRITE_SIZE, SPRITE_SIZE);
 }
 
 void Tile::setPosition(int x, int y){

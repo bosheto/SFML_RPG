@@ -9,16 +9,11 @@
 
 class Tile{
     private:
-        sf::Texture texture;
-        sf::Sprite sprite;
-
         int textureX;
         int textureY;
-        position pos;
-
+        int id;
     public:
-        Tile(int spriteX, int spriteY);
-        void draw(sf::RenderWindow& window);
-        void setPosition(int x, int y);
-        position getPosition() {return pos;};
+        Tile(int id, int spriteX, int spriteY);
+        sf::IntRect getSpriteRect();
+        int getId() {return id;};
 };

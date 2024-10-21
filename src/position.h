@@ -1,5 +1,7 @@
 #pragma once
 #include "globals.h"
+#include <math.h>
+
 
 struct position
 {
@@ -8,4 +10,4 @@ struct position
 };
 
 position getScreenPosition(position worldPos);
-
+position getWorldPosition(sf::Vector2i screenPos);

@@ -3,5 +3,5 @@
 
 class SandTile : public Tile {
     public:
-    SandTile(int x, int y) : Tile(1,0){setPosition(x,y);}
+    SandTile() : Tile(3,1,0){};
 };

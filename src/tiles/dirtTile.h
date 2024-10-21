@@ -3,5 +3,5 @@
 
 class DirtTile : public Tile {
     public:
-    DirtTile(int x, int y) : Tile(2,0){setPosition(x,y);}
+        DirtTile() : Tile(2,2,0){};
 };
