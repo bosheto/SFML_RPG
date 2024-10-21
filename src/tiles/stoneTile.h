@@ -3,5 +3,5 @@
 
 class StoneTile : public Tile {
     public:
-    StoneTile(int x, int y) : Tile(3,0){setPosition(x,y);}
+    StoneTile() : Tile(4,3,0){};
 };

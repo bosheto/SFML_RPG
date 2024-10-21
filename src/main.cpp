@@ -1,38 +1,47 @@
+#include <vector>
+#include <iostream>
+
 #include <SFML/Graphics.hpp> 
 #include <SFML/Graphics/Texture.hpp>
-#include <vector>
+
 #include "globals.h"
 #include "tiles/tiles.h"
+#include "world/level.h"
 
 sf::Texture SPRITE_SHEET;
-
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Window");
     
-    if(!SPRITE_SHEET.loadFromFile("assets/SpriteSheet.png"))
-        return 1;
+    Level level("test", 16, 16, "assets/SpriteSheet.png");    
 
-    std::vector<Tile> tiles;
-    SandTile tile1(0, 0);
-    DirtTile tile2(3, 0);
-    tiles.push_back(tile1);
-    tiles.push_back(tile2);
-    
     while (window.isOpen()) {
         sf::Event event;     
         
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
-        }
+            
+             if (event.type == sf::Event::MouseButtonPressed) {
+                // Get the mouse position relative to the window
+                sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+                
+                position t = getWorldPosition(mousePos);
+                
+                if(t.x < 0 || t.x >= level.getSizeX() || t.y < 0 || t.y >= level.getSizeY()){
+                    continue;
+                }
 
-
-        window.clear();
-        for (auto& tile : tiles) {
-            tile.draw(window);  // Draw each tile in the vector
+                Tile tile = StoneTile();
+                level.setTile(t, tile);
+                // level.setTile(t, tile);
+                std::cout << "Mouse clicked at: (" << t.x << ", " << t.y << ")" << std::endl;
+                // std::cout << tile.getId() << std::endl;
+            }
         }
         
+        window.clear();
+        level.draw(window);        
         window.display();
     }
 
